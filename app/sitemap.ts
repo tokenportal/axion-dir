@@ -2,7 +2,7 @@ import { supabase } from "@/lib/supabase";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://axionservices.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://axion.directory";
 
   const { data } = await supabase
     .from("landing_pages")
