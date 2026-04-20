@@ -1,4 +1,5 @@
 import type { LandingPage as LandingPageType } from "@/lib/supabase";
+import { CITIES } from "@/lib/cities";
 import Nav from "@/components/Nav";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import ContactForm from "@/components/ContactForm";
@@ -613,6 +614,29 @@ export default function LandingPage({ page, city, cityHeadline, cityIntro }: Pro
           <ContactForm serviceName={service_name} />
         </div>
       </section>
+
+      {/* ── CITIES WE SERVE ─────────────────────────────────── */}
+      {!city && (
+        <section className="py-14 px-4" style={{ backgroundColor: "#0F0F1E", borderTop: "1px solid rgba(212,175,55,0.08)" }}>
+          <div className="max-w-5xl mx-auto">
+            <p className="text-xs font-semibold tracking-widest uppercase mb-4 text-center" style={{ color: "#8B7355" }}>
+              Serving operators across the US
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+              {CITIES.map((c) => (
+                <a
+                  key={c.slug}
+                  href={`/services/${page.slug}/${c.slug}`}
+                  className="text-sm transition-colors hover:text-[#D4AF37]"
+                  style={{ color: "rgba(245,240,232,0.4)" }}
+                >
+                  {c.display}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
       <footer className="py-10 px-4" style={{ backgroundColor: "#0F0F1E", borderTop: "1px solid rgba(212,175,55,0.1)" }}>
