@@ -15,9 +15,10 @@ import {
 
 type Props = {
   page: LandingPageType;
+  city?: string;
 };
 
-export default function LandingPage({ page }: Props) {
+export default function LandingPage({ page, city }: Props) {
   const {
     service_name,
     headline,
@@ -75,6 +76,7 @@ export default function LandingPage({ page }: Props) {
             <a href="/#services" className="hover:text-[#D4AF37] transition-colors">Services</a>
             <span>/</span>
             <span style={{ color: "#1A1A2E" }}>{service_name}</span>
+            {city && <><span>/</span><span style={{ color: "#1A1A2E" }}>{city}</span></>}
           </div>
 
           <div className="flex flex-wrap gap-2 mb-5">
@@ -99,6 +101,11 @@ export default function LandingPage({ page }: Props) {
               style={{ fontFamily: "var(--font-playfair)", color: "#1A1A2E" }}
             >
               {headline ?? service_name}
+              {city && (
+                <span className="block text-2xl md:text-3xl mt-2 font-semibold" style={{ color: "#D4AF37" }}>
+                  Serving {city}
+                </span>
+              )}
             </h1>
           </ScrollFadeIn>
 
