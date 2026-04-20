@@ -608,17 +608,9 @@ export default function LandingPage({ page }: Props) {
             <a href="/#services" className="hover:text-[#D4AF37] transition-colors">All Services</a>
             <a href="#" className="hover:text-[#D4AF37] transition-colors">Privacy</a>
           </div>
-          {source_url && (
-            <a
-              href={source_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs hover:text-[#D4AF37] transition-colors inline-flex items-center gap-1"
-              style={{ color: "rgba(245,240,232,0.2)" }}
-            >
-              Market research source <ExternalLink className="h-3 w-3" />
-            </a>
-          )}
+          <p className="text-xs" style={{ color: "rgba(245,240,232,0.25)" }}>
+            © {new Date().getFullYear()} Axion Directory Co. All rights reserved.
+          </p>
         </div>
       </footer>
 
