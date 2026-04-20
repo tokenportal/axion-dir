@@ -27,16 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cityDisplay = getCityDisplay(city);
   if (!cityDisplay) return { title: "Not Found" };
 
-  const { data } = await supabase
-    .from("landing_pages")
-    .select("service_name, subheadline, primary_keyword")
-    .eq("slug", slug)
-    .single();
+  const [{ data: service }, { data: cityPage }] = await Promise.all([
+    supabase.from("landing_pages").select("service_name, subheadline, primary_keyword").eq("slug", slug).single(),
+    supabase.from("city_pages").select("meta_description, city_headline").eq("service_slug", slug).eq("city_slug", city).single(),
+  ]);
 
-  if (!data) return { title: "Service Not Found" };
+  if (!service) return { title: "Service Not Found" };
 
-  const title = `${data.service_name} in ${cityDisplay} | Axion Directory`;
-  const description = `Looking for ${data.primary_keyword} in ${cityDisplay}? ${data.subheadline}`;
+  const title = cityPage?.city_headline
+    ? `${cityPage.city_headline} | Axion Directory`
+    : `${service.service_name} in ${cityDisplay} | Axion Directory`;
+  const description = cityPage?.meta_description
+    ?? `Looking for ${service.primary_keyword} in ${cityDisplay}? ${service.subheadline}`;
 
   return {
     title,
@@ -50,13 +52,19 @@ export default async function CityServicePage({ params }: Props) {
   const cityDisplay = getCityDisplay(city);
   if (!cityDisplay) notFound();
 
-  const { data: page } = await supabase
-    .from("landing_pages")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  const [{ data: page }, { data: cityPage }] = await Promise.all([
+    supabase.from("landing_pages").select("*").eq("slug", slug).single(),
+    supabase.from("city_pages").select("city_headline, city_intro").eq("service_slug", slug).eq("city_slug", city).single(),
+  ]);
 
   if (!page) notFound();
 
-  return <LandingPage page={page} city={cityDisplay} />;
+  return (
+    <LandingPage
+      page={page}
+      city={cityDisplay}
+      cityHeadline={cityPage?.city_headline}
+      cityIntro={cityPage?.city_intro}
+    />
+  );
 }

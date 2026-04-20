@@ -16,9 +16,11 @@ import {
 type Props = {
   page: LandingPageType;
   city?: string;
+  cityHeadline?: string;
+  cityIntro?: string;
 };
 
-export default function LandingPage({ page, city }: Props) {
+export default function LandingPage({ page, city, cityHeadline, cityIntro }: Props) {
   const {
     service_name,
     headline,
@@ -100,8 +102,8 @@ export default function LandingPage({ page, city }: Props) {
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5"
               style={{ fontFamily: "var(--font-playfair)", color: "#1A1A2E" }}
             >
-              {headline ?? service_name}
-              {city && (
+              {cityHeadline ?? (city ? `${headline ?? service_name}` : (headline ?? service_name))}
+              {city && !cityHeadline && (
                 <span className="block text-2xl md:text-3xl mt-2 font-semibold" style={{ color: "#D4AF37" }}>
                   Serving {city}
                 </span>
@@ -114,6 +116,14 @@ export default function LandingPage({ page, city }: Props) {
               {subheadline}
             </p>
           </ScrollFadeIn>
+
+          {cityIntro && (
+            <ScrollFadeIn delay={150}>
+              <p className="text-base md:text-lg leading-relaxed mb-8 max-w-2xl rounded-xl px-5 py-4 border" style={{ color: "#4A4A6A", backgroundColor: "rgba(212,175,55,0.07)", borderColor: "rgba(212,175,55,0.25)" }}>
+                {cityIntro}
+              </p>
+            </ScrollFadeIn>
+          )}
 
           <ScrollFadeIn delay={200}>
             <div className="flex flex-wrap gap-4 items-center">
