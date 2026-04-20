@@ -647,6 +647,7 @@ export default function LandingPage({ page, city, cityHeadline, cityIntro }: Pro
           <div className="flex gap-6 text-sm" style={{ color: "rgba(245,240,232,0.4)" }}>
             <a href="/" className="hover:text-[#D4AF37] transition-colors">Home</a>
             <a href="/#services" className="hover:text-[#D4AF37] transition-colors">All Services</a>
+            <a href="https://medium.com/@axion.directory/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition-colors">Medium</a>
             <a href="#" className="hover:text-[#D4AF37] transition-colors">Privacy</a>
           </div>
           <p className="text-xs" style={{ color: "rgba(245,240,232,0.25)" }}>

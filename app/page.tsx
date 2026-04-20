@@ -485,6 +485,16 @@ export default async function HomePage() {
                   ))}
                 </ul>
               </div>
+              <div>
+                <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#D4AF37" }}>Follow</p>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="https://medium.com/@axion.directory/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#D4AF37] transition-colors" style={{ color: "rgba(245,240,232,0.5)" }}>
+                      Medium
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className="mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2" style={{ borderTop: "1px solid rgba(212,175,55,0.1)" }}>
