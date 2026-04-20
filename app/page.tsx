@@ -18,8 +18,8 @@ async function getServices() {
 
 const publications = ["Forbes", "Gartner", "Harvard Business Review", "McKinsey", "Bloomberg"];
 
-const stats = [
-  { value: "18+", label: "Specialized Services" },
+const makeStats = (publishedCount: number) => [
+  { value: `${publishedCount}+`, label: "Specialized Services" },
   { value: "74", label: "Validated Markets" },
   { value: "100%", label: "Founder-Led" },
   { value: "$0", label: "Fluff. Zero." },
@@ -49,6 +49,7 @@ export default async function HomePage() {
   const published = services.filter((s) => s.status === "published");
   const drafts = services.filter((s) => s.status !== "published");
   const allServices = [...published, ...drafts];
+  const stats = makeStats(published.length);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#F5F0E8" }}>
