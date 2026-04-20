@@ -94,7 +94,7 @@ export default async function HomePage() {
 
             <ScrollFadeIn delay={200}>
               <p className="text-lg md:text-xl mb-8 leading-relaxed" style={{ color: "#8B7355" }}>
-                Specialized services for founders and growth-stage companies. From AI-powered SEO to CRM cleanup — every service is validated by market research, delivered by experts.
+                Specialized services for founders and operators. From AI-powered SEO to CRM cleanup — every service is validated by market research, delivered by experts.
               </p>
             </ScrollFadeIn>
 

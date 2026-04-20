@@ -39,7 +39,7 @@ ${faqs ? `**FAQs:**\n${faqs}` : ""}`;
 
   const text = `# Axion Directory — Full Content
 
-> Axion Directory offers specialized, research-backed business services for founders and growth-stage companies. Services range from AI SEO optimization to CRM data cleanup, QuickBooks migration, LinkedIn ghostwriting, and more. Every service is validated against real market demand before launch.
+> Axion Directory offers specialized, research-backed business services for founders and operators. Services range from AI SEO optimization to CRM data cleanup, QuickBooks migration, LinkedIn ghostwriting, and more. Every service is validated against real market demand before launch.
 
 Base URL: ${baseUrl}
 Services count: ${(services ?? []).length}

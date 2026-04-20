@@ -17,7 +17,7 @@ export async function GET() {
 
   const text = `# Axion Directory
 
-> Axion Directory is a specialized business services platform offering research-backed, founder-led services for growth-stage companies and entrepreneurs. Every service is validated against real market demand data before we offer it.
+> Axion Directory is a specialized business services platform offering research-backed, founder-led services for founders and operators. Every service is validated against real market demand data before we offer it.
 
 ## Services
 
