@@ -484,7 +484,7 @@ export default function LandingPage({ page }: Props) {
 
           <ScrollFadeIn delay={100}>
             <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(212,175,55,0.2)" }}>
-              <CalendlyEmbed url="https://calendly.com/rampartvc/meet-up" />
+              <CalendlyEmbed url="https://calendly.com/axion-productions-team/30min" />
             </div>
           </ScrollFadeIn>
         </div>
