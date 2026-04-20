@@ -1,7 +1,7 @@
 import type { LandingPage as LandingPageType } from "@/lib/supabase";
 import Nav from "@/components/Nav";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import CalendlyEmbed from "@/components/CalendlyEmbed";
+import ContactForm from "@/components/ContactForm";
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
@@ -14,10 +14,9 @@ import {
 
 type Props = {
   page: LandingPageType;
-  calendlyUrl: string;
 };
 
-export default function LandingPage({ page, calendlyUrl }: Props) {
+export default function LandingPage({ page }: Props) {
   const {
     service_name,
     headline,
@@ -472,7 +471,7 @@ export default function LandingPage({ page, calendlyUrl }: Props) {
                 15 minutes. We&apos;ll diagnose exactly what&apos;s holding you back and tell you whether we can help — no pitch, no pressure.
               </p>
               <div className="flex flex-wrap justify-center gap-6 mt-6">
-                {["Pick a time that works for you", "No credit card required", "Cancel or reschedule anytime"].map((t) => (
+                {["No credit card required", "Reply within one business day", "No spam, ever"].map((t) => (
                   <div key={t} className="flex items-center gap-2 text-sm" style={{ color: "rgba(245,240,232,0.5)" }}>
                     <CheckCircle2 className="h-4 w-4" style={{ color: "#D4AF37" }} />
                     {t}
@@ -483,9 +482,7 @@ export default function LandingPage({ page, calendlyUrl }: Props) {
           </ScrollFadeIn>
 
           <ScrollFadeIn delay={100}>
-            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(212,175,55,0.2)" }}>
-              <CalendlyEmbed url={calendlyUrl} />
-            </div>
+            <ContactForm serviceName={service_name} />
           </ScrollFadeIn>
         </div>
       </section>

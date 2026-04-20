@@ -49,8 +49,5 @@ export default async function ServicePage({ params }: Props) {
 
   if (!page) notFound();
 
-  const calendlyUrl =
-    process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/your-link/30min";
-
-  return <LandingPage page={page} calendlyUrl={calendlyUrl} />;
+  return <LandingPage page={page} />;
 }
