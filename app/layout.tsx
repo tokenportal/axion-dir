@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Axion Directory — Expert Business Services",
+  title: "Axion Directory — Specialized Business Services",
   description: "Specialized business services backed by research. From CRM cleanup to AI SEO optimization — we help you move faster.",
   openGraph: {
     type: "website",
