@@ -2,6 +2,7 @@ import type { LandingPage as LandingPageType } from "@/lib/supabase";
 import Nav from "@/components/Nav";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import ContactForm from "@/components/ContactForm";
+import CalendlyEmbed from "@/components/CalendlyEmbed";
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
@@ -174,7 +175,7 @@ export default function LandingPage({ page }: Props) {
 
       {/* ── PROBLEM SECTION ──────────────────────────────────── */}
       {(problem_statement || pain_points?.length > 0) && (
-        <section className="py-20 px-4" style={{ backgroundColor: "#FFF8F0" }}>
+        <section id="problem" className="py-20 px-4" style={{ backgroundColor: "#FFF8F0" }}>
           <div className="max-w-5xl mx-auto">
             <ScrollFadeIn>
               <span className="block text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "#C1440E" }}>
@@ -288,7 +289,7 @@ export default function LandingPage({ page }: Props) {
 
       {/* ── HOW IT WORKS ─────────────────────────────────────── */}
       {process_steps?.length > 0 && (
-        <section className="py-20 px-4 aztec-bg" style={{ backgroundColor: "#F5F0E8" }}>
+        <section id="how-it-works" className="py-20 px-4 aztec-bg" style={{ backgroundColor: "#F5F0E8" }}>
           <div className="max-w-5xl mx-auto">
             <ScrollFadeIn>
               <span className="block text-xs font-semibold tracking-widest uppercase mb-4 text-center" style={{ color: "#8B7355" }}>
@@ -385,7 +386,7 @@ export default function LandingPage({ page }: Props) {
 
       {/* ── PRICING ──────────────────────────────────────────── */}
       {pricing_tiers?.length > 0 && (
-        <section className="py-20 px-4" style={{ backgroundColor: "#FFF8F0" }}>
+        <section id="pricing" className="py-20 px-4" style={{ backgroundColor: "#FFF8F0" }}>
           <div className="max-w-5xl mx-auto">
             <ScrollFadeIn>
               <span className="block text-xs font-semibold tracking-widest uppercase mb-4 text-center" style={{ color: "#8B7355" }}>
@@ -482,14 +483,16 @@ export default function LandingPage({ page }: Props) {
           </ScrollFadeIn>
 
           <ScrollFadeIn delay={100}>
-            <ContactForm serviceName={service_name} />
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(212,175,55,0.2)" }}>
+              <CalendlyEmbed url="https://calendly.com/rampartvc/meet-up" />
+            </div>
           </ScrollFadeIn>
         </div>
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────── */}
       {faq_items?.length > 0 && (
-        <section className="py-20 px-4" style={{ backgroundColor: "#F5F0E8" }}>
+        <section id="faq" className="py-20 px-4" style={{ backgroundColor: "#F5F0E8" }}>
           <div className="max-w-3xl mx-auto">
             <ScrollFadeIn>
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ fontFamily: "var(--font-playfair)", color: "#1A1A2E" }}>
@@ -581,7 +584,20 @@ export default function LandingPage({ page }: Props) {
         </div>
       </section>
 
-      {/* ── FOOTER ──────────────────���────────────────────────── */}
+      {/* ── FOOTER CONTACT FORM ──────────────────────────────── */}
+      <section className="py-16 px-4" style={{ backgroundColor: "#0F0F1E" }}>
+        <div className="max-w-2xl mx-auto">
+          <h3 className="text-xl font-bold text-center mb-2" style={{ fontFamily: "var(--font-playfair)", color: "#D4AF37" }}>
+            Prefer to send a message?
+          </h3>
+          <p className="text-sm text-center mb-8" style={{ color: "rgba(245,240,232,0.4)" }}>
+            We reply within one business day.
+          </p>
+          <ContactForm serviceName={service_name} />
+        </div>
+      </section>
+
+      {/* ── FOOTER ──────────────────────────────────────────── */}
       <footer className="py-10 px-4" style={{ backgroundColor: "#0F0F1E", borderTop: "1px solid rgba(212,175,55,0.1)" }}>
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-xl font-bold" style={{ fontFamily: "var(--font-playfair)", color: "#D4AF37" }}>

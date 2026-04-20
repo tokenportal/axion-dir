@@ -5,10 +5,26 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
+type NavItem = { label: string; hash: string };
+
+const HOME_ITEMS: NavItem[] = [
+  { label: "Directory", hash: "#services" },
+  { label: "How It Works", hash: "#how-it-works" },
+  { label: "About", hash: "#about" },
+];
+
+const LANDING_ITEMS: NavItem[] = [
+  { label: "The Problem", hash: "#problem" },
+  { label: "How It Works", hash: "#how-it-works" },
+  { label: "Pricing", hash: "#pricing" },
+  { label: "FAQ", hash: "#faq" },
+];
+
 export default function Nav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const href = (hash: string) => (isHome ? hash : `/${hash}`);
+  const items = isHome ? HOME_ITEMS : LANDING_ITEMS;
+  const href = (hash: string) => (isHome ? hash : hash);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -42,11 +58,7 @@ export default function Nav() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {[
-              { label: "Directory", hash: "#services" },
-              { label: "How It Works", hash: "#how-it-works" },
-              { label: "About", hash: "#about" },
-            ].map((item) => (
+            {items.map((item) => (
               <Link
                 key={item.hash}
                 href={href(item.hash)}
@@ -61,11 +73,11 @@ export default function Nav() {
           {/* CTA */}
           <div className="hidden md:block">
             <a
-              href={href("#how-it-works")}
+              href={isHome ? "#how-it-works" : "#booking"}
               className="btn-gold inline-flex items-center font-semibold text-sm px-5 py-2 rounded-full transition-opacity hover:opacity-90"
               style={{ backgroundColor: "#D4AF37", color: "#1A1A2E" }}
             >
-              Book a Free Call
+              {isHome ? "Book a Free Call" : "Get Started"}
             </a>
           </div>
 
@@ -86,11 +98,7 @@ export default function Nav() {
           className="md:hidden px-4 pb-4 pt-2 space-y-3"
           style={{ backgroundColor: "#1A1A2E" }}
         >
-          {[
-            { label: "Directory", hash: "#services" },
-            { label: "How It Works", hash: "#how-it-works" },
-            { label: "About", hash: "#about" },
-          ].map((item) => (
+          {items.map((item) => (
             <Link
               key={item.hash}
               href={href(item.hash)}
@@ -102,12 +110,12 @@ export default function Nav() {
             </Link>
           ))}
           <a
-            href={href("#how-it-works")}
+            href={isHome ? "#how-it-works" : "#booking"}
             onClick={() => setMenuOpen(false)}
             className="btn-gold w-full inline-flex justify-center items-center font-semibold text-sm rounded-full mt-2 py-2 transition-opacity hover:opacity-90"
             style={{ backgroundColor: "#D4AF37", color: "#1A1A2E" }}
           >
-            Book a Free Call
+            {isHome ? "Book a Free Call" : "Get Started"}
           </a>
         </div>
       )}
