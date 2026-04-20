@@ -2,9 +2,13 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Nav() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const href = (hash: string) => (isHome ? hash : `/${hash}`);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -39,13 +43,13 @@ export default function Nav() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             {[
-              { label: "Directory", href: "#services" },
-              { label: "How It Works", href: "#how-it-works" },
-              { label: "About", href: "#about" },
+              { label: "Directory", hash: "#services" },
+              { label: "How It Works", hash: "#how-it-works" },
+              { label: "About", hash: "#about" },
             ].map((item) => (
               <Link
-                key={item.href}
-                href={item.href}
+                key={item.hash}
+                href={href(item.hash)}
                 className="text-sm font-medium transition-colors duration-200 hover:text-[#D4AF37]"
                 style={{ color: "rgba(245,240,232,0.8)" }}
               >
@@ -57,7 +61,7 @@ export default function Nav() {
           {/* CTA */}
           <div className="hidden md:block">
             <a
-              href="#how-it-works"
+              href={href("#how-it-works")}
               className="btn-gold inline-flex items-center font-semibold text-sm px-5 py-2 rounded-full transition-opacity hover:opacity-90"
               style={{ backgroundColor: "#D4AF37", color: "#1A1A2E" }}
             >
@@ -83,13 +87,13 @@ export default function Nav() {
           style={{ backgroundColor: "#1A1A2E" }}
         >
           {[
-            { label: "Directory", href: "#services" },
-            { label: "How It Works", href: "#how-it-works" },
-            { label: "About", href: "#about" },
+            { label: "Directory", hash: "#services" },
+            { label: "How It Works", hash: "#how-it-works" },
+            { label: "About", hash: "#about" },
           ].map((item) => (
             <Link
-              key={item.href}
-              href={item.href}
+              key={item.hash}
+              href={href(item.hash)}
               onClick={() => setMenuOpen(false)}
               className="block text-sm font-medium py-2"
               style={{ color: "rgba(245,240,232,0.8)" }}
@@ -98,7 +102,7 @@ export default function Nav() {
             </Link>
           ))}
           <a
-            href="#how-it-works"
+            href={href("#how-it-works")}
             onClick={() => setMenuOpen(false)}
             className="btn-gold w-full inline-flex justify-center items-center font-semibold text-sm rounded-full mt-2 py-2 transition-opacity hover:opacity-90"
             style={{ backgroundColor: "#D4AF37", color: "#1A1A2E" }}
