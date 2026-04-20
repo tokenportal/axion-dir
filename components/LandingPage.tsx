@@ -328,7 +328,7 @@ export default function LandingPage({ page, calendlyUrl }: Props) {
       )}
 
       {/* ── EXPERT VIDEO ─────────────────────────────────────── */}
-      {expert_videos?.length > 0 && expert_videos[0].video_id && !expert_videos[0].video_id.includes('VERIFY') && !expert_videos[0].video_id.includes('placeholder') && (
+      {expert_videos?.length > 0 && expert_videos[0].video_id && (
         <section className="py-16 px-4" style={{ backgroundColor: "#FFF8F0" }}>
           <div className="max-w-3xl mx-auto">
             <ScrollFadeIn>
