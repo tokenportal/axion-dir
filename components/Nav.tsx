@@ -77,7 +77,7 @@ export default function Nav() {
               className="btn-gold inline-flex items-center font-semibold text-sm px-5 py-2 rounded-full transition-opacity hover:opacity-90"
               style={{ backgroundColor: "#D4AF37", color: "#1A1A2E" }}
             >
-              {isHome ? "Book a Free Call" : "Get Started"}
+              {isHome ? "Book a Free Call" : "Book Free Consultation"}
             </a>
           </div>
 
@@ -115,7 +115,7 @@ export default function Nav() {
             className="btn-gold w-full inline-flex justify-center items-center font-semibold text-sm rounded-full mt-2 py-2 transition-opacity hover:opacity-90"
             style={{ backgroundColor: "#D4AF37", color: "#1A1A2E" }}
           >
-            {isHome ? "Book a Free Call" : "Get Started"}
+            {isHome ? "Book a Free Call" : "Book Free Consultation"}
           </a>
         </div>
       )}
